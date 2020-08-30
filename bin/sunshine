@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+// allows us to use ES modules (import)
+require = require('esm')(module);
+
+// bring in "src/cli.js"
+require('../src/cli') 
+	// call our "cli" exported function
+	.cli(process.argv);

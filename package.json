@@ -1,0 +1,27 @@
+{
+  "name": "@aborzoi/sunshine",
+  "version": "1.0.0",
+  "description": "A CLI for deploying web projects via SFTP",
+  "main": "src/index.js",
+  "bin": {
+    "@aborzoi/sunshine": "bin/sunshine",
+    "sunshine": "bin/sunshine"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "sftp",
+    "sunshine"
+  ],
+  "author": "Addie Barron",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "ssh2": "^0.8.9"
+  }
+}

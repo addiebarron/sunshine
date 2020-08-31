@@ -1,45 +1,14 @@
+let connectWith = require('./connection');
+let fs = require('fs');
+
 /* called in executable */
-export function cli(args) {
+export function cli(argv) {
+	let data = fs.readFileSync('sunshine.config.json')
+	let config = JSON.parse(data);
 
-	let Client = require('ssh2').Client;
-
-	let conn = new Client();
-
-	let connSettings = {
-		// set these via args / config file
-		host: '100.19.128.124',
-		port: 22,
-		username: 'addie',
-		password: 'mayohotsauce'
-		// You can use a key file too, read the ssh2 documentation
+	if (argv.config) {
+		console.log( JSON.stringify(config) );
 	}
 
-	let remotePath = '/var/www/test'
-
-	conn.on('ready', function() {
-	    conn.sftp( function(err, sftp) {
-	        if (err) throw err;
-
-	        let fs = require("fs");
-
-	        let readStream = fs.createReadStream(PWD + localFile);
-        	let writeStream = sftp.createWriteStream(remotePath + remoteFile);
-
-        	writeStream.on('close',function () {
-	            console.log( "- file transferred succesfully" );
-	        });
-
-	        writeStream.on('end', function () {
-	            conn.close();
-	            console.log( "sftp connection closed" );
-	        });
-
-	        readStream.pipe( writeStream );
-			// you'll be able to use sftp here
-			// Use sftp to execute tasks like .unlink or chmod etc
-	    });
-	}).connect(connSettings);
-	
+	// connectWith(config);
 }
-
-

@@ -2,10 +2,10 @@
   "name": "@aborzoi/sunshine",
   "version": "1.0.0",
   "description": "A CLI for deploying web projects via SFTP",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "bin": {
-    "@aborzoi/sunshine": "bin/sunshine",
-    "sunshine": "bin/sunshine"
+    "@aborzoi/sunshine": "bin/sunshine.js",
+    "sunshine": "bin/sunshine.js"
   },
   "publishConfig": {
     "access": "public"
@@ -21,8 +21,13 @@
   "author": "Addie Barron",
   "license": "MIT",
   "dependencies": {
+    "boxen": "^4.2.0",
     "esm": "^3.2.25",
+    "prompts": "^2.3.2",
     "ssh2": "^0.8.9",
     "yargs": "^15.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.8.0"
   }
 }

@@ -1,17 +1,12 @@
 #!/usr/bin/env node
 
+// allow project root and sunshine root to be accessed from any module
+const path = require('path');
+global.projroot = process.cwd();
+global.approot = path.resolve(__dirname, '..');
+
 // allows us to use ES modules (import)
 require = require('esm')(module);
 
-const {argv} = require('yargs')
-	.option('verbose', {
-    alias: 'v',
-    type: 'boolean',
-    description: 'Run with verbose logging'
-	})
-
-
-// bring in "src/cli.js"
-require('../src/cli') 
-	// call our "cli" exported function
-	.cli(argv);
+// run command line
+require('../lib/cli').run();
